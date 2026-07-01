@@ -3,10 +3,8 @@ unit HGM.Controls.Chat;
 interface
 
 uses
-  Winapi.Messages, Winapi.Windows, System.SysUtils, System.Classes,
-  System.Contnrs, System.Types, System.UITypes, Vcl.Controls, Vcl.Forms,
-  Vcl.Menus, Vcl.Graphics, Vcl.StdCtrls, Vcl.GraphUtil, Vcl.ImgList, Vcl.Themes,
-  Winapi.ShellAPI, System.Generics.Collections, HGM.Common, Vcl.Dialogs;
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Classes, System.Types,
+  Vcl.Controls, Vcl.Graphics, Vcl.ImgList, System.Generics.Collections, HGM.Common;
 
 type
   TChatMessageType = (mtOpponent, mtMe);
@@ -267,7 +265,21 @@ procedure Register;
 implementation
 
 uses
-  Math, HGM.Common.Utils;
+  Math;
+
+function ColorDarker(Color: TColor; Percent: Byte): TColor;
+var
+  R, G, B: Byte;
+begin
+  Color := ColorToRGB(Color);
+  R := GetRValue(Color);
+  G := GetGValue(Color);
+  B := GetBValue(Color);
+  R := R - MulDiv(R, Percent, 100);
+  G := G - MulDiv(G, Percent, 100);
+  B := B - MulDiv(B, Percent, 100);
+  Result := RGB(R, G, B);
+end;
 
 procedure Register;
 begin
@@ -311,7 +323,7 @@ var
 begin
   inherited Create(AOwner);
   ControlStyle := [csAcceptsControls, csCaptureMouse, csOpaque, csClickEvents, csDoubleClicks,
-    csPannable, csGestures];
+      csPannable, csGestures];
   Width := 200;
   Height := 400;
   Color := $0020160F;
@@ -371,7 +383,7 @@ begin
         for j := 1 to Random(10) do
           Text := Text + 'Text body';
         Text := DateTimeToStr(Now) + #13#10 + Text;
-        FromColor := RGB(RandomRange(100, 240), RandomRange(100, 240), RandomRange(100, 240));
+        FromColor := clGray;// RGB(RandomRange(100, 240), RandomRange(100, 240), RandomRange(100, 240));
       end;
       if i in [25..30] then
         with Items.AddInfo do
@@ -557,7 +569,7 @@ var
   BaseColor: TColor;
   i, Radius: Integer;
   FStartDraw, FSkip, FNeedImage: Boolean;
-  lpPaint: TPaintStruct;
+  //lpPaint: TPaintStruct;
 
   function NeedDraw(Item: TRect): Boolean;
   begin
@@ -576,7 +588,7 @@ begin
   BaseColor := Color;
   FStartDraw := False;
   FSkip := False;
-  BeginPaint(Handle, lpPaint);
+  //BeginPaint(Handle, lpPaint);
   with Canvas do
   begin
     if not FCalcOnly then
@@ -750,7 +762,7 @@ begin
     TextOut(0, 20, FMaxOffset.ToString);
     TextOut(0, 40, FPaintCounter.ToString);  }
   end;
-  EndPaint(Handle, lpPaint);
+  //EndPaint(Handle, lpPaint);
 end;
 
 function ThCustomChat.NeedDrawDownButton: Boolean;

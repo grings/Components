@@ -21,7 +21,7 @@ type
     property OnMouseLeave: TNotifyEvent read FOnMouseLeave write FOnMouseLeave;
   end;
 
-  TLabelEx = class(TShape)
+  ThLabelEx = class(TShape)
   private
     FLabel: string;
     FTextFormat: TTextFormat;
@@ -112,7 +112,7 @@ uses
 procedure Register;
 begin
   RegisterComponents(PackageName, [ThLink]);
-  RegisterComponents(PackageName, [TLabelEx]);
+  RegisterComponents(PackageName, [ThLabelEx]);
   RegisterComponents(PackageName, [ThLabel]);
 end;
 
@@ -144,7 +144,7 @@ end;
 
 { TLabelEx }
 
-constructor TLabelEx.Create(AOwner: TComponent);
+constructor ThLabelEx.Create(AOwner: TComponent);
 begin
   inherited;
   StyledColor($00996666);
@@ -159,13 +159,13 @@ begin
   FTextFormat := [tfCenter, tfVerticalCenter, tfWordBreak, tfWordEllipsis, tfSingleLine];
 end;
 
-destructor TLabelEx.Destroy;
+destructor ThLabelEx.Destroy;
 begin
   FFont.Free;
   inherited;
 end;
 
-procedure TLabelEx.Paint;
+procedure ThLabelEx.Paint;
 var
   LD2DCanvas: TDirect2DCanvas;
 var
@@ -243,43 +243,43 @@ begin
  //DrawTextCentered(Canvas, FRect, Str, DF);
 end;
 
-procedure TLabelEx.SetEllipseRectVertical(const Value: Boolean);
+procedure ThLabelEx.SetEllipseRectVertical(const Value: Boolean);
 begin
   FEllipseRectVertical := Value;
   Repaint;
 end;
 
-procedure TLabelEx.SetFont(const Value: TFont);
+procedure ThLabelEx.SetFont(const Value: TFont);
 begin
   FFont := Value;
   Repaint;
 end;
 
-procedure TLabelEx.SetIgnorBounds(const Value: Boolean);
+procedure ThLabelEx.SetIgnorBounds(const Value: Boolean);
 begin
   FIgnorBounds := Value;
   Repaint;
 end;
 
-procedure TLabelEx.SetLabel(const Value: string);
+procedure ThLabelEx.SetLabel(const Value: string);
 begin
   FLabel := Value;
   Repaint;
 end;
 
-procedure TLabelEx.SetRoundRectParam(const Value: TPoint);
+procedure ThLabelEx.SetRoundRectParam(const Value: TPoint);
 begin
   FRoundRectParam := Value;
   Repaint;
 end;
 
-procedure TLabelEx.SetTextFormat(const Value: TTextFormat);
+procedure ThLabelEx.SetTextFormat(const Value: TTextFormat);
 begin
   FTextFormat := Value;
   Repaint;
 end;
 
-procedure TLabelEx.StyledColor(Value: TColor);
+procedure ThLabelEx.StyledColor(Value: TColor);
 begin
   Brush.Color := Value;
   Pen.Color := ColorDarker(Brush.Color);

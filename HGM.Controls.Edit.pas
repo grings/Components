@@ -103,7 +103,7 @@ type
 
   TOnGetItemText = procedure(Sender: TObject; Index: Integer; var Value: string) of object;
 
-  TlkComboBox = class(TCustomPanel)
+  ThComboBox = class(TCustomPanel)
   private
     FItemIndex: Integer;
     FListData: TTableEx;
@@ -173,7 +173,7 @@ uses
 procedure Register;
 begin
   RegisterComponents(PackageName, [TEditEx]);
-  RegisterComponents(PackageName, [TlkComboBox]);
+  RegisterComponents(PackageName, [ThComboBox]);
 end;
 
 { TEditEx }
@@ -574,60 +574,60 @@ end;
 
 { TComboBoxEx }
 
-function TlkComboBox.GetAutoSelect: Boolean;
+function ThComboBox.GetAutoSelect: Boolean;
 begin
   Result := FEdit.AutoSelect;
 end;
 
-function TlkComboBox.GetColor: TColor;
+function ThComboBox.GetColor: TColor;
 begin
   Result := inherited Color;
 end;
 
-function TlkComboBox.GetColumnCount: Integer;
+function ThComboBox.GetColumnCount: Integer;
 begin
   Result := FListData.ColumnCount;
 end;
 
-function TlkComboBox.GetColumns: TTableColumns;
+function ThComboBox.GetColumns: TTableColumns;
 begin
   Result := FListData.Columns;
 end;
 
-function TlkComboBox.GetItemCount: Integer;
+function ThComboBox.GetItemCount: Integer;
 begin
   Result := FListData.ItemCount;
 end;
 
-function TlkComboBox.GetShowClearButton: Boolean;
+function ThComboBox.GetShowClearButton: Boolean;
 begin
   Result := FRightButton.Visible;
 end;
 
-function TlkComboBox.GetText: string;
+function ThComboBox.GetText: string;
 begin
   Result := FEdit.Text;
 end;
 
-function TlkComboBox.GetTextHint: string;
+function ThComboBox.GetTextHint: string;
 begin
   Result := FEdit.TextHint;
 end;
 
-procedure TlkComboBox.OnButtonClick(Sender: TObject);
+procedure ThComboBox.OnButtonClick(Sender: TObject);
 begin
   FEdit.Clear;
   ItemIndex := -1;
 end;
 
-procedure TlkComboBox.OnEditChange(Sender: TObject);
+procedure ThComboBox.OnEditChange(Sender: TObject);
 begin
   ItemIndex := -1;
   if Assigned(FOnChange) then
     FOnChange(Self);
 end;
 
-procedure TlkComboBox.OnListButtonClick(Sender: TObject);
+procedure ThComboBox.OnListButtonClick(Sender: TObject);
 begin
  {
  if FListWindow.Visible then
@@ -668,17 +668,17 @@ begin
   end;
 end;
 
-procedure TlkComboBox.OnListExit(Sender: TObject);
+procedure ThComboBox.OnListExit(Sender: TObject);
 begin
   FListData.Visible := False;
 end;
 
-procedure TlkComboBox.SetAutoSelect(const Value: Boolean);
+procedure ThComboBox.SetAutoSelect(const Value: Boolean);
 begin
   FEdit.AutoSelect := Value;
 end;
 
-procedure TlkComboBox.SetColor(const Value: TColor);
+procedure ThComboBox.SetColor(const Value: TColor);
 begin
   inherited Color := Value;
   FListData.LineColor := clWhite;
@@ -686,25 +686,25 @@ begin
   FListData.LineSelColor := Value;
 end;
 
-procedure TlkComboBox.SetGetDataProc(const Value: TGetTableDataProc);
+procedure ThComboBox.SetGetDataProc(const Value: TGetTableDataProc);
 begin
   FGetDataProc := Value;
   FListData.GetData := FGetDataProc;
 end;
 
-procedure TlkComboBox.SetItemCount(const Value: Integer);
+procedure ThComboBox.SetItemCount(const Value: Integer);
 begin
   FListData.ItemCount := Value;
 end;
 
-procedure TlkComboBox.SetItemIndex(const Value: Integer);
+procedure ThComboBox.SetItemIndex(const Value: Integer);
 begin
   FItemIndex := Value;
   if Assigned(FListData) then
     FListData.ItemIndex := Value;
 end;
 
-procedure TlkComboBox.SetShowClearButton(const Value: Boolean);
+procedure ThComboBox.SetShowClearButton(const Value: Boolean);
 begin
   FRightButton.Visible := Value;
   if Value then
@@ -714,22 +714,22 @@ begin
   Repaint;
 end;
 
-procedure TlkComboBox.SetText(const Value: string);
+procedure ThComboBox.SetText(const Value: string);
 begin
   FEdit.Text := Value;
 end;
 
-procedure TlkComboBox.SetTextHint(const Value: string);
+procedure ThComboBox.SetTextHint(const Value: string);
 begin
   FEdit.TextHint := Value;
 end;
 
-function TlkComboBox.AddColumn: Integer;
+function ThComboBox.AddColumn: Integer;
 begin
   Result := FListData.AddColumn;
 end;
 
-constructor TlkComboBox.Create(AOwner: TComponent);
+constructor ThComboBox.Create(AOwner: TComponent);
 begin
   inherited;
   Width := 200;
@@ -821,17 +821,17 @@ begin
   ShowClearButton := True;
 end;
 
-procedure TlkComboBox.DeleteColumn(Index: Integer);
+procedure ThComboBox.DeleteColumn(Index: Integer);
 begin
   FListData.DeleteColumn(Index);
 end;
 
-destructor TlkComboBox.Destroy;
+destructor ThComboBox.Destroy;
 begin
   inherited;
 end;
 
-procedure TlkComboBox.OnListItemClick(Sender: TObject; MouseButton: TMouseButton; const Index: Integer);
+procedure ThComboBox.OnListItemClick(Sender: TObject; MouseButton: TMouseButton; const Index: Integer);
 var
   Str: string;
 begin

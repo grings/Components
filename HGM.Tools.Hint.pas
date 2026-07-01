@@ -3,11 +3,13 @@ unit HGM.Tools.Hint;
 interface
 
 uses
-  Vcl.Controls, System.Classes, Winapi.Messages, Winapi.Windows, System.SysUtils, Vcl.Graphics, Vcl.ExtCtrls, Vcl.Themes,
-  Vcl.Forms, Vcl.ImgList, Vcl.ActnList, System.SyncObjs, System.Types, System.UITypes, HGM.Controls.PanelExt, HGM.Common;
+  Vcl.Controls, System.Classes, Winapi.Messages, Winapi.Windows, System.SysUtils,
+  Vcl.Graphics, Vcl.ExtCtrls, Vcl.Themes, Vcl.Forms, Vcl.ImgList, Vcl.ActnList,
+  System.SyncObjs, System.Types, System.UITypes, HGM.Controls.PanelExt,
+  HGM.Common;
 
 type
-  TlkHint = class(TComponent)
+  ThHint = class(TComponent)
   private
     FText: string;
     FTimerHide: TTimer;
@@ -57,12 +59,12 @@ uses
 
 procedure Register;
 begin
-  RegisterComponents(PackageName, [TlkHint]);
+  RegisterComponents(PackageName, [ThHint]);
 end;
 
 { TlkHint }
 
-constructor TlkHint.Create(AOwner: TComponent);
+constructor ThHint.Create(AOwner: TComponent);
 begin
   inherited;
   FFont := TFont.Create;
@@ -84,14 +86,14 @@ begin
   FBorderColor := $00878787;
 end;
 
-destructor TlkHint.Destroy;
+destructor ThHint.Destroy;
 begin
   FFont.Free;
   FHide;
   inherited;
 end;
 
-procedure TlkHint.FHide;
+procedure ThHint.FHide;
 begin
   if Assigned(FPanel) then
     FreeAndNil(FPanel);
@@ -99,7 +101,7 @@ begin
   FTimerRepaint.Enabled := False;
 end;
 
-procedure TlkHint.FShow;
+procedure ThHint.FShow;
 var
   RGN: HRGN;
 begin
@@ -131,26 +133,26 @@ begin
   FPanel.BringToFront;
 end;
 
-procedure TlkHint.SetBorderColor(const Value: TColor);
+procedure ThHint.SetBorderColor(const Value: TColor);
 begin
   FBorderColor := Value;
 end;
 
-procedure TlkHint.SetColor(const Value: TColor);
+procedure ThHint.SetColor(const Value: TColor);
 begin
   FColor := Value;
   if Assigned(FPanel) then
     FPanel.Repaint;
 end;
 
-procedure TlkHint.SetFont(const Value: TFont);
+procedure ThHint.SetFont(const Value: TFont);
 begin
   FFont := Value;
   if Assigned(FPanel) then
     FPanel.Canvas.Font.Assign(Value);
 end;
 
-procedure TlkHint.SetHintSize;
+procedure ThHint.SetHintSize;
 begin
   if not Assigned(FPanel) then
     Exit;
@@ -158,17 +160,17 @@ begin
   FWidth := Min(Max(FPanel.Canvas.TextWidth(FText) + 4, 10), FMaxWidth) + 10;
 end;
 
-procedure TlkHint.SetMaxWidth(const Value: Integer);
+procedure ThHint.SetMaxWidth(const Value: Integer);
 begin
   FMaxWidth := Value;
 end;
 
-procedure TlkHint.SetRounded(const Value: Boolean);
+procedure ThHint.SetRounded(const Value: Boolean);
 begin
   FRounded := Value;
 end;
 
-procedure TlkHint.Show(Control: TControl);
+procedure ThHint.Show(Control: TControl);
 begin
   SetHintSize;
   FRect.Left := (Control.Left + Control.Width div 2) - (FWidth div 2);
@@ -178,7 +180,7 @@ begin
   FShow;
 end;
 
-procedure TlkHint.Show(PosPoint: TPoint);
+procedure ThHint.Show(PosPoint: TPoint);
 begin
   SetHintSize;
   FRect.Left := Min(Max(PosPoint.X - (FWidth div 2), 0), Screen.DesktopWidth - FWidth);
@@ -188,12 +190,12 @@ begin
   FShow;
 end;
 
-procedure TlkHint.Hide;
+procedure ThHint.Hide;
 begin
   FHide;
 end;
 
-procedure TlkHint.OnPanelPaint(Sender: TObject);
+procedure ThHint.OnPanelPaint(Sender: TObject);
 var
   R: TRect;
   S: string;
@@ -218,12 +220,12 @@ begin
   end;
 end;
 
-procedure TlkHint.OnTimerHideTimer(Sender: TObject);
+procedure ThHint.OnTimerHideTimer(Sender: TObject);
 begin
   FHide;
 end;
 
-procedure TlkHint.OnTimerRepaintTime(Sender: TObject);
+procedure ThHint.OnTimerRepaintTime(Sender: TObject);
 begin
   if Assigned(FPanel) then
     FPanel.Repaint;

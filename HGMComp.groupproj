@@ -9,6 +9,9 @@
         <Projects Include="Samples\Samples.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="Samples\ChatSample\hChatSample.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -35,14 +38,23 @@
     <Target Name="Samples:Make">
         <MSBuild Projects="Samples\Samples.dproj" Targets="Make"/>
     </Target>
+    <Target Name="hChatSample">
+        <MSBuild Projects="Samples\ChatSample\hChatSample.dproj"/>
+    </Target>
+    <Target Name="hChatSample:Clean">
+        <MSBuild Projects="Samples\ChatSample\hChatSample.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="hChatSample:Make">
+        <MSBuild Projects="Samples\ChatSample\hChatSample.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="HGMComponents;Samples"/>
+        <CallTarget Targets="HGMComponents;Samples;hChatSample"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="HGMComponents:Clean;Samples:Clean"/>
+        <CallTarget Targets="HGMComponents:Clean;Samples:Clean;hChatSample:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="HGMComponents:Make;Samples:Make"/>
+        <CallTarget Targets="HGMComponents:Make;Samples:Make;hChatSample:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
