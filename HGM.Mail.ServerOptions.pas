@@ -88,10 +88,10 @@ begin
   with TIdDNSResolver.Create(nil) do
   begin
     QueryType := [qtMX];
-    Host := DNSHost;
+    Host := string(DNSHost);
     WaitingTime := 5000;
     try
-      Resolve(Domain);
+      Resolve(string(Domain));
       if QueryResult.Count > 0 then
       begin
         for i := 0 to QueryResult.Count - 1 do
@@ -313,7 +313,7 @@ end;
 
 function TISPDB.MX(const AEmail: string; AResponse: TStringList): Boolean;
 begin
-  Result := GetMailServers(cDefaultDNS, GetDomain(AEmail), AResponse);
+  Result := GetMailServers(cDefaultDNS, AnsiString(GetDomain(AEmail)), AResponse);
 end;
 
 procedure TISPDB.Parse(AXMLResponse: TStringStream);

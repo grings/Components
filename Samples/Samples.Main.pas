@@ -7,7 +7,8 @@ uses
   Vcl.Forms, Vcl.Dialogs, Vcl.Grids, HGM.Controls.ColorGrid, HGM.Controls.VirtualTable, System.Generics.Collections,
   Vcl.ExtCtrls, Vcl.StdCtrls, HGM.Controls.PanelExt, Direct2D, D2D1, HGM.AutoTextType, HGM.Controls.Edit,
   HGM.Controls.Chat, HGM.Button, Vcl.ComCtrls, HGM.Controls.ProgressBar, HGM.Controls.TrackBar,
-  HGM.License;
+  HGM.License, HGM.Controls.Labels, HGM.Controls.EditPanel, HGM.Common.Notify,
+  HGM.Controls.SpinEdit, HGM.Controls.PanelCollapsed, HGM.Controls.ListBoxDraw;
 
 type
   TForm8 = class(TForm)
@@ -19,6 +20,19 @@ type
     hColorGrid1: ThColorGrid;
     hTrue1: ThTrue;
     EditEx1: TEditEx;
+    ButtonFlat1: TButtonFlat;
+    CheckBoxFlat1: TCheckBoxFlat;
+    NotifyWindow1: TNotifyWindow;
+    NotifyPanel1: TNotifyPanel;
+    EditPanel1: TEditPanel;
+    EditPanel2: TEditPanel;
+    hLink2: ThLink;
+    hLink1: ThLink;
+    hLabelEx4: ThLabelEx;
+    ListBoxEx1: TListBoxEx;
+    PanelCollapsed1: TPanelCollapsed;
+    hSpinEdit1: ThSpinEdit;
+    hTrue2: ThTrue;
     procedure DrawPanel1Paint(Sender: TObject);
     procedure TrackBar1Change(Sender: TObject);
     procedure hTrackbar1Change(Sender: TObject; Position: Extended);

@@ -17,14 +17,12 @@ object FormPopup: TFormPopup
   Padding.Top = 1
   Padding.Right = 1
   Padding.Bottom = 1
-  OldCreateOrder = False
   Visible = True
   OnActivate = FormActivate
   OnClick = FormClick
   OnClose = FormClose
   OnHide = FormHide
   OnShow = FormShow
-  PixelsPerInch = 96
   TextHeight = 13
   object imgUpArrow: TImage
     Left = 1

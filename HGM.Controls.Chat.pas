@@ -4,7 +4,8 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Classes, System.Types,
-  Vcl.Controls, Vcl.Graphics, Vcl.ImgList, System.Generics.Collections, HGM.Common;
+  System.UITypes, Vcl.Controls, Vcl.Graphics, Vcl.ImgList,
+  System.Generics.Collections, HGM.Common;
 
 type
   TChatMessageType = (mtOpponent, mtMe);

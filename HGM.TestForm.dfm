@@ -12,8 +12,6 @@ object FormList: TFormList
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
-  PixelsPerInch = 96
   TextHeight = 13
   object ThTrackbar1: ThTrackbar
     Left = 8
@@ -21,5 +19,7 @@ object FormList: TFormList
     Width = 521
     Height = 21
     Position = 100.000000000000000000
+    Color = 6901811
+    ParentColor = False
   end
 end

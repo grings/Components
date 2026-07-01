@@ -77,7 +77,7 @@
         <DCC_S>false</DCC_S>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Android)'!=''">
-        <DCC_UsePackage>xmlrtl;rtl;IndySystem;IndyProtocols;IndyCore;fmx;$(DCC_UsePackage)</DCC_UsePackage>
+        <DCC_UsePackage>xmlrtl;rtl;IndySystem;IndyProtocols;IndyCore;fmx;RESTComponents;$(DCC_UsePackage)</DCC_UsePackage>
         <EnabledSysJars>android-support-v4.dex.jar;cloud-messaging.dex.jar;fmx.dex.jar;google-analytics-v2.dex.jar;google-play-billing.dex.jar;google-play-licensing.dex.jar;google-play-services.dex.jar</EnabledSysJars>
         <VerInfo_Keys>package=com.embarcadero.$(MSBuildProjectName);label=$(MSBuildProjectName);versionCode=1;versionName=1.0.0;persistent=False;restoreAnyVersion=False;installLocation=auto;largeHeap=False;theme=TitleBar;hardwareAccelerated=true;apiKey=</VerInfo_Keys>
         <BT_BuildType>Debug</BT_BuildType>
@@ -89,12 +89,12 @@
         <Base_Android>true</Base_Android>
         <CfgParent>Base</CfgParent>
         <Base>true</Base>
-        <DCC_UsePackage>xmlrtl;rtl;IndySystem;IndyProtocols;IndyCore;$(DCC_UsePackage);fmx;$(DCC_UsePackage)</DCC_UsePackage>
+        <DCC_UsePackage>xmlrtl;rtl;IndySystem;IndyProtocols;IndyCore;$(DCC_UsePackage);fmx;RESTComponents;$(DCC_UsePackage)</DCC_UsePackage>
         <EnabledSysJars>android-support-v4.dex.jar;cloud-messaging.dex.jar;fmx.dex.jar;google-analytics-v2.dex.jar;google-play-billing.dex.jar;google-play-licensing.dex.jar;google-play-services.dex.jar</EnabledSysJars>
         <Android_LauncherIcon192>$(BDS)\bin\Artwork\Android\FM_LauncherIcon_192x192.png</Android_LauncherIcon192>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
-        <DCC_UsePackage>xmlrtl;rtl;vclactnband;vclx;vcl;vclimg;IndySystem;IndyProtocols;IndyCore;VclSmp;PngComponents;PngComponentsD;fmx;$(DCC_UsePackage)</DCC_UsePackage>
+        <DCC_UsePackage>xmlrtl;rtl;vclactnband;vclx;vcl;vclimg;IndySystem;IndyProtocols;IndyCore;VclSmp;PngComponents;PngComponentsD;fmx;RESTComponents;$(DCC_UsePackage)</DCC_UsePackage>
         <DCC_Namespace>Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
@@ -102,7 +102,7 @@
         <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=;ProgramID=com.embarcadero.$(ModuleName)</VerInfo_Keys>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win64)'!=''">
-        <DCC_UsePackage>xmlrtl;rtl;vclactnband;vclx;vcl;vclimg;IndySystem;IndyProtocols;IndyCore;VclSmp;PngComponents;PngComponentsD;fmx;$(DCC_UsePackage)</DCC_UsePackage>
+        <DCC_UsePackage>xmlrtl;rtl;vclactnband;vclx;vcl;vclimg;IndySystem;IndyProtocols;IndyCore;VclSmp;PngComponents;PngComponentsD;fmx;RESTComponents;$(DCC_UsePackage)</DCC_UsePackage>
         <DCC_Namespace>Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;$(DCC_Namespace)</DCC_Namespace>
         <BT_BuildType>Debug</BT_BuildType>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
@@ -115,6 +115,7 @@
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <VerInfo_Locale>1033</VerInfo_Locale>
+        <DCC_UsePackage>RESTComponents;$(DCC_UsePackage)</DCC_UsePackage>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
@@ -141,28 +142,59 @@
         <DCCReference Include="rtl.dcp"/>
         <DCCReference Include="vcl.dcp"/>
         <DCCReference Include="vclimg.dcp"/>
+        <DCCReference Include="xmlrtl.dcp"/>
+        <DCCReference Include="fmx.dcp"/>
+        <DCCReference Include="IndySystem.dcp"/>
+        <DCCReference Include="IndyProtocols.dcp"/>
+        <DCCReference Include="IndyCore.dcp"/>
+        <DCCReference Include="RESTComponents.dcp"/>
+        <DCCReference Include="VclSmp.dcp"/>
+        <DCCReference Include="HGM.ArrayHelper.pas"/>
         <DCCReference Include="HGM.Autorun.pas"/>
+        <DCCReference Include="HGM.AutoTextType.pas"/>
+        <DCCReference Include="HGM.BlurGaussian.pas"/>
         <DCCReference Include="HGM.Button.pas"/>
+        <DCCReference Include="HGM.Common.Base64.pas"/>
+        <DCCReference Include="HGM.Common.DateUtils.pas"/>
+        <DCCReference Include="HGM.Common.Download.pas"/>
         <DCCReference Include="HGM.Common.Notify.pas"/>
         <DCCReference Include="HGM.Common.pas"/>
+        <DCCReference Include="HGM.Common.Settings.pas"/>
+        <DCCReference Include="HGM.Common.Utils.pas"/>
+        <DCCReference Include="HGM.Common.Workspace.pas"/>
+        <DCCReference Include="HGM.Controls.Chat.pas"/>
+        <DCCReference Include="HGM.Controls.ColorGrid.pas"/>
         <DCCReference Include="HGM.Controls.Edit.pas"/>
         <DCCReference Include="HGM.Controls.EditPanel.pas"/>
+        <DCCReference Include="HGM.Controls.Labels.Base.pas"/>
         <DCCReference Include="HGM.Controls.Labels.pas"/>
         <DCCReference Include="HGM.Controls.ListBoxDraw.pas"/>
         <DCCReference Include="HGM.Controls.PanelCollapsed.pas"/>
         <DCCReference Include="HGM.Controls.PanelExt.pas"/>
-        <DCCReference Include="HGM.Controls.SpinEdit.pas"/>
-        <DCCReference Include="HGM.Controls.VirtualTable.pas"/>
-        <DCCReference Include="HGM.Graphics.AnimateControl.pas"/>
-        <DCCReference Include="HGM.Tools.Hint.pas"/>
-        <DCCReference Include="HGM.AutoTextType.pas"/>
-        <DCCReference Include="HGM.Controls.ColorGrid.pas"/>
-        <DCCReference Include="HGM.License.pas"/>
-        <DCCReference Include="HGM.Controls.Labels.Base.pas"/>
-        <DCCReference Include="HGM.Controls.Chat.pas"/>
         <DCCReference Include="HGM.Controls.ProgressBar.pas"/>
+        <DCCReference Include="HGM.Controls.SpinEdit.pas"/>
         <DCCReference Include="HGM.Controls.TrackBar.pas"/>
-        <DCCReference Include="HGM.Common.Utils.pas"/>
+        <DCCReference Include="HGM.Controls.VirtualTable.pas"/>
+        <DCCReference Include="HGM.FMX.Ani.pas"/>
+        <DCCReference Include="HGM.FMX.Image.pas"/>
+        <DCCReference Include="HGM.FMX.ImageLoader.pas"/>
+        <DCCReference Include="HGM.FMX.SmoothScroll.pas"/>
+        <DCCReference Include="HGM.Graphics.AnimateControl.pas"/>
+        <DCCReference Include="HGM.License.pas"/>
+        <DCCReference Include="HGM.Mail.ServerOptions.pas"/>
+        <DCCReference Include="HGM.Popup.pas">
+            <Form>FormPopup</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="HGM.Screenshot.pas"/>
+        <DCCReference Include="HGM.TestForm.pas">
+            <Form>FormList</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="HGM.Tools.Hint.pas"/>
+        <DCCReference Include="HGM.Utils.Color.pas"/>
+        <DCCReference Include="HGM.WinAPI.pas"/>
+        <DCCReference Include="HGM.WinAPI.ShellDlg.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -193,6 +225,12 @@
             </Platforms>
             <Deployment Version="5">
                 <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\21.0\Bpl\HGMComponents.bpl" Configuration="Debug" Class="ProjectOutput"/>
+                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\37.0\Bpl\HGMComponents.bpl" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>HGMComponents.bpl</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployClass Name="AdditionalDebugSymbols">
                     <Platform Name="OSX32">
                         <Operation>1</Operation>
